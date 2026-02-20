@@ -2,13 +2,46 @@
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <title>我的专属网站</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>科技主页</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="box">
-    <h1>这是我的专属网站</h1>
-    <p>我可以随时修改这里的内容</p>
+
+<div class="background-grid"></div>
+
+<div class="card">
+  <div class="avatar"></div>
+  <h1 class="title"></h1>
+  <p class="subtitle"></p>
+  <div class="btn-group">
+    <a href="#" class="btn primary">进入主页</a>
+    <a href="#" class="btn secondary">项目展示</a>
   </div>
+</div>
+
+<script>
+  const texts = ["欢迎来到我的科技空间", "未来已来 · 即刻出发"];
+  let textIndex = 0;
+  let charIndex = 0;
+  const titleEl = document.querySelector(".title");
+
+  function type() {
+    if (charIndex < texts[textIndex].length) {
+      titleEl.textContent += texts[textIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, 120);
+    } else {
+      setTimeout(() => {
+        titleEl.textContent = "";
+        charIndex = 0;
+        textIndex = (textIndex + 1) % texts.length;
+        type();
+      }, 2000);
+    }
+  }
+  type();
+</script>
+
 </body>
 </html>
